@@ -47,7 +47,7 @@ stimulus_json <- stimulus_df_to_json(df = stroop_stim,
                                      data = c("word","color","response","stim_type"))
 
 # write json object to script
-cat("<script> var test_stimuli = ", stimulus_json,"; </script>")
+write_to_script(stimulus_json,"test_stimuli")
 
 ```
 
