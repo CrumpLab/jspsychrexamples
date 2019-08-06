@@ -12,17 +12,49 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = FALSE, message=FALSE, warning=FALSE)
+# load the plugin scripts in plugins.html which is included in the header.
 ```
 
-```{r, eval=FALSE}
-# load the plugin scripts in plugins.html which is included in the header.
+```{r, results="asis"}
+# Define stimuli in R, output as script 
+library(xprmntr)
+library(dplyr)
+
+# create dataframe to define stimuli
+stroop_stim <- data.frame( stimulus = length(16),
+                           word = rep(c("red","green","blue","yellow"), each=4),
+                           color = rep(c("red","green","blue","yellow"), 4),
+                           response = rep(c("r","g","b","y"), 4),
+                           stim_type = length(16),
+                           id = "stroop_stim",
+                           fontsize = "60pt") %>%
+  mutate(stim_type = as.numeric(word==color)) %>%
+  mutate(stim_type = recode(stim_type, `1` = "congruent", `0` = "incongruent"))
+
+# write html definitions to the stimulus column
+# note this could be added as a pipe to the above, setting df=.
+stroop_stim$stimulus <- html_stimulus(df = stroop_stim, 
+                                html_content = "word",
+                                html_element = "p",
+                                column_names = c("color","fontsize"),
+                                css = c("color", "font-size"),
+                                id = "id")
+
+# create json object from dataframe
+stimulus_json <- stimulus_df_to_json(df = stroop_stim,
+                                     stimulus = "stimulus",
+                                     data = c("word","color","response","stim_type"))
+
+# write json object to script
+cat("<script> var test_stimuli = ", stimulus_json,"; </script>")
+
 ```
 
 
 ```{js}
 /* experiment parameters */
-var reps_per_trial_type = 4;
+var reps_per_trial_type = 1;
 
 /*set up welcome block*/
 var welcome = {
@@ -41,25 +73,6 @@ var instructions = {
   post_trial_gap: 1000
 };
 
-/*defining stimuli*/
-var test_stimuli = [
-  {
-    stimulus: "<p style='color:red;font-size:60pt;'>RED</p>",
-    data: { stim_type: 'congruent', response: 'r'}
-  },
-  {
-    stimulus: "<p style='color:blue;font-size:60pt;'>RED</p>",
-    data: { stim_type: 'incongruent', response: 'b'}
-  },
-  {
-    stimulus: "<p style='color:green;font-size:60pt;'>RED</p>",
-    data: { stim_type: 'incongruent', response: 'g'}
-  },
-  {
-    stimulus: "<p style='color:yellow;font-size:60pt;'>RED</p>",
-    data: { stim_type: 'incongruent', response: 'y'}
-  }
-];
 
 /* defining test timeline */
 var test = {

@@ -2935,9 +2935,155 @@ src: local('Open Sans Bold'), local('OpenSans-Bold'), url(data:font/ttf;base64,A
 
 
 
+<script> var test_stimuli =  [
+  {
+    "stimulus": "<p id = 'stroop_stim' style = 'color: red; font-size: 60pt;'>red<\/p>",
+    "data": {
+      "word": "red",
+      "color": "red",
+      "response": "r",
+      "stim_type": "congruent"
+    }
+  },
+  {
+    "stimulus": "<p id = 'stroop_stim' style = 'color: green; font-size: 60pt;'>red<\/p>",
+    "data": {
+      "word": "red",
+      "color": "green",
+      "response": "g",
+      "stim_type": "incongruent"
+    }
+  },
+  {
+    "stimulus": "<p id = 'stroop_stim' style = 'color: blue; font-size: 60pt;'>red<\/p>",
+    "data": {
+      "word": "red",
+      "color": "blue",
+      "response": "b",
+      "stim_type": "incongruent"
+    }
+  },
+  {
+    "stimulus": "<p id = 'stroop_stim' style = 'color: yellow; font-size: 60pt;'>red<\/p>",
+    "data": {
+      "word": "red",
+      "color": "yellow",
+      "response": "y",
+      "stim_type": "incongruent"
+    }
+  },
+  {
+    "stimulus": "<p id = 'stroop_stim' style = 'color: red; font-size: 60pt;'>green<\/p>",
+    "data": {
+      "word": "green",
+      "color": "red",
+      "response": "r",
+      "stim_type": "incongruent"
+    }
+  },
+  {
+    "stimulus": "<p id = 'stroop_stim' style = 'color: green; font-size: 60pt;'>green<\/p>",
+    "data": {
+      "word": "green",
+      "color": "green",
+      "response": "g",
+      "stim_type": "congruent"
+    }
+  },
+  {
+    "stimulus": "<p id = 'stroop_stim' style = 'color: blue; font-size: 60pt;'>green<\/p>",
+    "data": {
+      "word": "green",
+      "color": "blue",
+      "response": "b",
+      "stim_type": "incongruent"
+    }
+  },
+  {
+    "stimulus": "<p id = 'stroop_stim' style = 'color: yellow; font-size: 60pt;'>green<\/p>",
+    "data": {
+      "word": "green",
+      "color": "yellow",
+      "response": "y",
+      "stim_type": "incongruent"
+    }
+  },
+  {
+    "stimulus": "<p id = 'stroop_stim' style = 'color: red; font-size: 60pt;'>blue<\/p>",
+    "data": {
+      "word": "blue",
+      "color": "red",
+      "response": "r",
+      "stim_type": "incongruent"
+    }
+  },
+  {
+    "stimulus": "<p id = 'stroop_stim' style = 'color: green; font-size: 60pt;'>blue<\/p>",
+    "data": {
+      "word": "blue",
+      "color": "green",
+      "response": "g",
+      "stim_type": "incongruent"
+    }
+  },
+  {
+    "stimulus": "<p id = 'stroop_stim' style = 'color: blue; font-size: 60pt;'>blue<\/p>",
+    "data": {
+      "word": "blue",
+      "color": "blue",
+      "response": "b",
+      "stim_type": "congruent"
+    }
+  },
+  {
+    "stimulus": "<p id = 'stroop_stim' style = 'color: yellow; font-size: 60pt;'>blue<\/p>",
+    "data": {
+      "word": "blue",
+      "color": "yellow",
+      "response": "y",
+      "stim_type": "incongruent"
+    }
+  },
+  {
+    "stimulus": "<p id = 'stroop_stim' style = 'color: red; font-size: 60pt;'>yellow<\/p>",
+    "data": {
+      "word": "yellow",
+      "color": "red",
+      "response": "r",
+      "stim_type": "incongruent"
+    }
+  },
+  {
+    "stimulus": "<p id = 'stroop_stim' style = 'color: green; font-size: 60pt;'>yellow<\/p>",
+    "data": {
+      "word": "yellow",
+      "color": "green",
+      "response": "g",
+      "stim_type": "incongruent"
+    }
+  },
+  {
+    "stimulus": "<p id = 'stroop_stim' style = 'color: blue; font-size: 60pt;'>yellow<\/p>",
+    "data": {
+      "word": "yellow",
+      "color": "blue",
+      "response": "b",
+      "stim_type": "incongruent"
+    }
+  },
+  {
+    "stimulus": "<p id = 'stroop_stim' style = 'color: yellow; font-size: 60pt;'>yellow<\/p>",
+    "data": {
+      "word": "yellow",
+      "color": "yellow",
+      "response": "y",
+      "stim_type": "congruent"
+    }
+  }
+] ; </script>
 <script type="text/javascript">
 /* experiment parameters */
-var reps_per_trial_type = 4;
+var reps_per_trial_type = 1;
 
 /*set up welcome block*/
 var welcome = {
@@ -2956,8 +3102,6 @@ var instructions = {
   post_trial_gap: 1000
 };
 
-/*defining stimuli*/
-var test_stimuli = [{"stimulus":"<p id = 'stroop_stim' style = 'color: red; font-size: 16pt;'>red<\/p>","data":{"word":"red","color":"red"}},{"stimulus":"<p id = 'stroop_stim' style = 'color: green; font-size: 16pt;'>red<\/p>","data":{"word":"red","color":"green"}},{"stimulus":"<p id = 'stroop_stim' style = 'color: blue; font-size: 16pt;'>red<\/p>","data":{"word":"red","color":"blue"}},{"stimulus":"<p id = 'stroop_stim' style = 'color: yellow; font-size: 16pt;'>red<\/p>","data":{"word":"red","color":"yellow"}},{"stimulus":"<p id = 'stroop_stim' style = 'color: red; font-size: 16pt;'>green<\/p>","data":{"word":"green","color":"red"}},{"stimulus":"<p id = 'stroop_stim' style = 'color: green; font-size: 16pt;'>green<\/p>","data":{"word":"green","color":"green"}},{"stimulus":"<p id = 'stroop_stim' style = 'color: blue; font-size: 16pt;'>green<\/p>","data":{"word":"green","color":"blue"}},{"stimulus":"<p id = 'stroop_stim' style = 'color: yellow; font-size: 16pt;'>green<\/p>","data":{"word":"green","color":"yellow"}},{"stimulus":"<p id = 'stroop_stim' style = 'color: red; font-size: 16pt;'>blue<\/p>","data":{"word":"blue","color":"red"}},{"stimulus":"<p id = 'stroop_stim' style = 'color: green; font-size: 16pt;'>blue<\/p>","data":{"word":"blue","color":"green"}},{"stimulus":"<p id = 'stroop_stim' style = 'color: blue; font-size: 16pt;'>blue<\/p>","data":{"word":"blue","color":"blue"}},{"stimulus":"<p id = 'stroop_stim' style = 'color: yellow; font-size: 16pt;'>blue<\/p>","data":{"word":"blue","color":"yellow"}},{"stimulus":"<p id = 'stroop_stim' style = 'color: red; font-size: 16pt;'>yellow<\/p>","data":{"word":"yellow","color":"red"}},{"stimulus":"<p id = 'stroop_stim' style = 'color: green; font-size: 16pt;'>yellow<\/p>","data":{"word":"yellow","color":"green"}},{"stimulus":"<p id = 'stroop_stim' style = 'color: blue; font-size: 16pt;'>yellow<\/p>","data":{"word":"yellow","color":"blue"}},{"stimulus":"<p id = 'stroop_stim' style = 'color: yellow; font-size: 16pt;'>yellow<\/p>","data":{"word":"yellow","color":"yellow"}}];
 
 /* defining test timeline */
 var test = {
