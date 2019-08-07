@@ -15,6 +15,12 @@ The Stroop.Rmd file generated the following html file which is being hosted on t
 
 ## Stroop2 demo
 
-The Stroop2.Rmd file generated the following html file which is being hosted on this repo using github pages. This demo uses some new functions to compose the stimulus set in R.
+The Stroop2.Rmd file generated the following html file which is being hosted on this repo using github pages. This demo **uses some new functions to compose the stimulus set in R**.
 
 [https://crumplab.github.io/jsPsychRexamples/Stroop2/Stroop2.html](https://crumplab.github.io/jsPsychRexamples/Stroop2/Stroop2.html)
+
+## Stroop3 demo
+
+This demo is **an attempt to allow multiple keyboard responses**, rather than a single response. The new plugin (still in development), is jspsych-html-keyboard-multiple-response.js.
+
+[https://crumplab.github.io/jsPsychRexamples/Stroop3/Stroop3.html](https://crumplab.github.io/jsPsychRexamples/Stroop3/Stroop3.html)
