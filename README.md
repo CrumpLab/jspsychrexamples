@@ -27,6 +27,6 @@ This demo is **an attempt to allow multiple keyboard responses**, rather than a 
 
 ## FirebaseDemo
 
-Demo for using google's firebase as an external database to save the data from an online experiment.
+Demo for using google's firebase as an external database to save the data from an online experiment. Some instructions for this demo are here: [https://crumplab.github.io/jsPsychRexamples/FirebaseDemo/Instructions_FirebaseDemo.html](https://crumplab.github.io/jsPsychRexamples/FirebaseDemo/Instructions_FirebaseDemo.html)
 
 [https://crumplab.github.io/jsPsychRexamples/FirebaseDemo/experiment/index.html](https://crumplab.github.io/jsPsychRexamples/FirebaseDemo/experiment/index.html)
