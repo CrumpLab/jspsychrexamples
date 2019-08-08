@@ -24,3 +24,9 @@ The Stroop2.Rmd file generated the following html file which is being hosted on 
 This demo is **an attempt to allow multiple keyboard responses**, rather than a single response. The new plugin (still in development), is jspsych-html-keyboard-multiple-response.js.
 
 [https://crumplab.github.io/jsPsychRexamples/Stroop3/Stroop3.html](https://crumplab.github.io/jsPsychRexamples/Stroop3/Stroop3.html)
+
+## FirebaseDemo
+
+Demo for using google's firebase as an external database to save the data from an online experiment.
+
+[https://crumplab.github.io/jsPsychRexamples/FirebaseDemo/experiment/index.html](https://crumplab.github.io/jsPsychRexamples/FirebaseDemo/experiment/index.html)
