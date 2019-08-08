@@ -15,6 +15,7 @@ knitr::opts_chunk$set(echo = FALSE, message=FALSE, warning=FALSE)
 
 
 ```{r}
+# Load scripts for firebase to save data to the realtime database
 library(htmltools)
 tagList(
 tags$script(src='https://www.gstatic.com/firebasejs/6.3.4/firebase-app.js'),
@@ -24,6 +25,7 @@ tags$script(src='https://www.gstatic.com/firebasejs/6.3.4/firebase-database.js')
 ```
 
 ```{js}
+// Firebase set up
 
  // Your web app's Firebase configuration
   var firebaseConfig = {
@@ -62,8 +64,6 @@ tags$script(src='https://www.gstatic.com/firebasejs/6.3.4/firebase-database.js')
   // ...
 });
   
-
-//
 ```
 
 ```{r}
@@ -77,7 +77,7 @@ tags$script(src='xprmntr/xprmntr.js')
 )
 ```
 
-<!-- This demo (Stroop3.Rmd) uses a new plugin (in dev) to allow for multiple responses, like a typewritten response. The plugin is called jspsych-html-keyboard-multiple-response.js-->
+<!-- This demo uses a new plugin (in dev) to allow for multiple responses, like a typewritten response. The plugin is called jspsych-html-keyboard-multiple-response.js-->
 
 ```{r, results="asis"}
 # Define stimuli in R, output as <script> 
@@ -169,6 +169,7 @@ timeline.push(test);
 timeline.push(debrief);
 
 /*start experiment*/
+/* data is saved to firebase using the anonymous uid */
 jsPsych.init({
     timeline: timeline,
     on_finish: function() {
