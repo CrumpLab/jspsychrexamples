@@ -1,0 +1,83 @@
+---
+title: "FirebaseDemo Instructions"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## What is this?
+
+This is a way to create and run online experiments using R-studio, jsPsych, and google's firebase.
+
+jsPsych is a javascript library with many features for designing behavioral experiments that can be deployed in web-browsers. The documentation for jsPsych is here: [https://www.jspsych.org](https://www.jspsych.org). Using that library, you could write your own html files to create experiments.
+
+One purpose of this demonstration is to bring the jsPscyh library into R-studio, which provides a nice set of tools for writing the files, editing them, and testing them out. In other words, we'll write the jsPsych experiment in an .Rmd file, and then knit it to html.
+
+This example is placed in a Github repository, which has the option to host or serve the experiment to the web using Github pages. Github pages is client-side only, so that the data that is generated inside a participants web-browser must be sent somewhere, in this case to realtime database on google's firebase. **Note:** if you attempt to run this demo (or run yourself through the experiment hosted on this github site), then the data you generate will be sent to the firebase project I created for this demo. You will have to create your own firebase account to save the data to your own database. This set of instructions details that process.
+
+## The files and folders
+
+- `experiment` contains the files to generate and run the experiment.
+- `data` is not used in this demo
+
+Inside the experiment folder are the following files and folders:
+
+- `index.html` is the html that runs the experiment. This file is currently served to the web from this git repo.
+- `index.Rmd` contains the code used to generate the jsPsych experiment and connect to a firebase database. Open this file in R-studio to modify it, and knit it to compile `index.html`.
+- `jspsych-6` is a folder containing the jsPsych javascript library
+- `skeleton.html` is part of a template that is used in building the `index.html`
+
+## running the demo
+
+An easy way to run the demo would be to get a github account and fork this repo. Then under the setting for the repo, turn on github pages, with the master branch option. When you do that all of the .html files in the repo can be accessed by the url shown when you turn on the github pages option.
+
+You might then use github desktop (or other git tool) to add the repository to your local computer. Now, you should be able to open the .Rproj file in R-studio.
+
+**Note:** you can run the demo at this point without further modification, it's just that without modification, the data will be sent to the firebase project I made for this demo.
+
+## Setting up firebase
+
+1. create an account with firebase: [https://firebase.google.com/](https://firebase.google.com/) (it's free, and you can pay if you need lots of data or other options, but the free tier should be fine for many use cases).
+
+2. Add a new project, give it a name, skip the setting up google analytics. Continue to your new console for this project.
+
+3. Click on database in the left-side navigation. Scroll down a bit a find the "realtime" database, choose create database. Then, choose start in test mode. This allows you to read and write to the database. It will also let anyone else with the credentials to this app to read and write. Later on you can set the security settings that you want. Almost done.
+
+4. The next thing you need are the configuration codes to interact with this database. These can be found by clicking on the little gear (beside project overview, top left), and choosing project settings. In the first tab (general), you will need to add an app, add a web app (this symbol </>). You do not need to turn on hosting (which would allow you to upload html files and host those files from firebase, this would be an alternative to hosting on github pages). 
+
+When you create the app you should see some code for the **firebase SDK snippet**. You will need to copy the info contained in the firebaseConfig variable into the `index.Rmd` file, and replace the contents of the keys that are there now. Should look something like this...
+
+```{js, echo = TRUE}
+var firebaseConfig = {
+    apiKey: " stuff here",
+    authDomain: "stuff here ",
+    databaseURL: "stuff here ",
+    projectId: "stuff here ",
+    storageBucket: "",
+    messagingSenderId: "stuff here ",
+    appId: "stuff here "
+
+```
+
+
+# Wrapping up
+
+If everything works, you should now be able to knit the `index.Rmd` file, which will generate a new `index.html` file. I think you should also see your experiment appear in R-studio's viewer pane. It will liekly run, but it won't save the data to firebase because the firebase api only works when the html file is served from http, (e.g., needs to be online).
+
+So, just push your changes back to your github repo. Then go to your repository and load up the url to your `index.html` file provided by github pages. Now when you run through the experiment, the data should save to firebase. After running the experiment, you can go to your firebase console, and look in the database. You should see a new entry with some data. Presently, whenever a new user goes to the site, a new user id (uid) is generated. The data is stored under that uid. If the same user goes back and is given the same uid, then the data from a previous session will be overwritten. 
+
+## Getting the data from firebase to R
+
+I will expand on doing this later. For now, I will just point out that the `firedata` pacakge can be used to do this from R.
+
+
+
+
+
+
+
+
+
+
