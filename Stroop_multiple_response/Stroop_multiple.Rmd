@@ -1,5 +1,5 @@
 ---
-title: "Stroop"
+title: "Stroop Multiple Responses"
 author: "Matt Crump"
 date: "8/16/2019"
 output: html_document
@@ -9,7 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
 ```
 
-This example is the default jspsych template that gets loaded by the jspsychr package. It involves a simple Stroop experiment, with stimulus creation handled by R.
+This example uses a custom plugin to collect multiple keyboard responses on each trial. This is an example of modifying an existing jspsych plugin. In this case the modified plugin can be found in:  `jspsych-6/plugins/jspsych-html-keyboard-multiple-response.js`
 
 The index.html file runs the experiment, the index.rmd file compiles the html experiment. 
 

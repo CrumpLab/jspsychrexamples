@@ -1,0 +1,124 @@
+---
+title: "Stroop Demo"
+author: "Matthew Crump"
+output:
+  html_document:
+    mathjax: null
+    highlight: null
+    theme: null
+    css: jspsych-6/css/jspsych.css
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message=FALSE, warning=FALSE)
+```
+
+```{r}
+# load jspsych and plugin scripts
+# note: this is an r code chunk
+library(htmltools)
+tagList(
+tags$script(src='jspsych-6/jspsych.js'),
+tags$script(src='jspsych-6/plugins/jspsych-html-keyboard-response.js'),
+tags$script(src='jspsych-6/plugins/jspsych-html-keyboard-multiple-response.js'),
+tags$script(src='jspsychr/jspsychr.js')
+)
+```
+
+```{r, results="asis"}
+# Define stimuli in R, output as <script> 
+library(jspsychr)
+library(dplyr)
+
+# create dataframe to define stimuli
+stroop_stim <- data.frame( stimulus = length(4),
+                           word = rep(c("red","green","blue","yellow")),
+                           color = rep(c("red","green","blue","yellow")),
+                           response = rep(c("r","g","b","y")),
+                           stim_type = length(4),
+                           id = "stroop_stim",
+                           fontsize = "60pt") %>%
+  mutate(stim_type = as.numeric(word==color)) %>%
+  mutate(stim_type = recode(stim_type, `1` = "congruent", `0` = "incongruent"))
+
+# write html definitions to the stimulus column
+# note this could be added as a pipe to the above, setting df=.
+stroop_stim$stimulus <- html_stimulus(df = stroop_stim, 
+                                html_content = "word",
+                                html_element = "p",
+                                column_names = c("color","fontsize"),
+                                css = c("color", "font-size"),
+                                id = "id")
+
+# create json object from dataframe
+stimulus_json <- stimulus_df_to_json(df = stroop_stim,
+                                     stimulus = "stimulus",
+                                     data = c("word","color","response","stim_type"))
+
+# write json object to script
+write_to_script(stimulus_json,"test_stimuli")
+
+```
+
+
+```{js}
+/* experiment parameters */
+var reps_per_trial_type = 1;
+
+/*set up welcome block*/
+var welcome = {
+  type: "html-keyboard-response",
+  stimulus: "Welcome to the experiment. Press any key to begin."
+};
+
+/*set up instructions block*/
+var instructions = {
+  type: "html-keyboard-response",
+  stimulus: "<p>In this task, you will see word in a color</p>"+
+    "<p style='color:red;font-size:60pt;'>BLUE</p>"+
+    "<p>Type the whole name of the color, not the word, then press space</p>"+
+    "<p>E.g., type 'red' for this example example</p>"+
+    "<p>Press any key to begin.</p>",
+  post_trial_gap: 1000
+};
+
+
+/* defining test timeline */
+var test = {
+  timeline: [{
+    type: 'html-keyboard-multiple-response',
+  //  choices: ["r","g","b","y"],
+    trial_duration: 5000,
+   // prompt: "<p>hello</p>",
+    response_ends_trial: false,
+    stimulus: jsPsych.timelineVariable('stimulus'),
+    data: jsPsych.timelineVariable('data'),
+    post_trial_gap: function() {
+        return Math.floor(Math.random() * 1500) + 500;
+    }
+  }],
+  timeline_variables: test_stimuli,
+  sample: {type: 'fixed-repetitions', size: reps_per_trial_type}
+};
+
+/*defining debriefing block*/
+var debrief = {
+  type: "html-keyboard-response",
+  stimulus: "<p> Thanks for participating </p>"
+};
+
+/*set up experiment structure*/
+var timeline = [];
+timeline.push(welcome);
+timeline.push(instructions);
+timeline.push(test);
+timeline.push(debrief);
+
+/*start experiment*/
+jsPsych.init({
+    timeline: timeline,
+    on_finish: jspsychr.save_locally
+});
+```
+
+

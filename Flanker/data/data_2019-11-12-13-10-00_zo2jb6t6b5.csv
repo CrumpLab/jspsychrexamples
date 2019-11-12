@@ -1,0 +1,8 @@
+file_id,rt,stimulus,key_press,trial_type,trial_index,time_elapsed,internal_node_id,stim_type,direction,correct
+data_2019-11-12-13-10-00_zo2jb6t6b5,1274,Welcome to the experiment. Press any key to begin.,32,html-keyboard-response,0,1277,0.0-0.0,NA,NA,NA
+data_2019-11-12-13-10-00_zo2jb6t6b5,644,"<p>In this task, you will see five arrows on the screen, like the example below.</p><p><<><<</p><p>Press the left arrow key if the middle arrow is pointing left. (<)</p><p>Press the right arrow key if the middle arrow is pointing right. (>)</p><p>Press any key to begin.</p>",32,html-keyboard-response,1,1921,0.0-1.0,NA,NA,NA
+data_2019-11-12-13-10-00_zo2jb6t6b5,785,>><>>,37,html-keyboard-response,2,3708,0.0-2.0-0.0,incongruent,left,TRUE
+data_2019-11-12-13-10-00_zo2jb6t6b5,438,>>>>>,39,html-keyboard-response,3,5548,0.0-2.0-0.1,congruent,right,TRUE
+data_2019-11-12-13-10-00_zo2jb6t6b5,558.0000000000009,<<><<,39,html-keyboard-response,4,7968,0.0-2.0-0.2,incongruent,right,TRUE
+data_2019-11-12-13-10-00_zo2jb6t6b5,544,<<<<<,37,html-keyboard-response,5,10423,0.0-2.0-0.3,congruent,left,TRUE
+data_2019-11-12-13-10-00_zo2jb6t6b5,1360.9999999999982,<p>You responded correctly on <strong>67%</strong> of the trials.</p> <p>Your average response time for congruent trials was <strong>491ms</strong>.</p><p>Your average response time for incongruent trials was <strong>672ms</strong>.</p><p>Press any key to complete the experiment. Thank you!</p>,39,html-keyboard-response,6,13336,0.0-3.0,NA,NA,NA

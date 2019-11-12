@@ -1,0 +1,8 @@
+file_id,rt,stimulus,key_press,trial_type,trial_index,time_elapsed,internal_node_id,key_name,word,color,response,stim_type
+data_2019-11-12-13-30-28_6v7dpf9sr3,1044,Welcome to the experiment. Press any key to begin.,32,html-keyboard-response,0,1046,0.0-0.0,NA,NA,NA,NA,NA
+data_2019-11-12-13-30-28_6v7dpf9sr3,1355,"<p>In this task, you will see word in a color</p><p style='color:red;font-size:60pt;'>BLUE</p><p>Type the whole name of the color, not the word, then press space</p><p>E.g., type 'red' for this example example</p><p>Press any key to begin.</p>",32,html-keyboard-response,1,2402,0.0-1.0,NA,NA,NA,NA,NA
+data_2019-11-12-13-30-28_6v7dpf9sr3,8621166129214121e11,<p id = 'stroop_stim' style = 'color: yellow; font-size: 60pt;'>yellow</p>,89697676798732,html-keyboard-multiple-response,2,5810,0.0-2.0-0.0,"Y,E,L,L,O,W,",yellow,yellow,y,congruent
+data_2019-11-12-13-30-28_6v7dpf9sr3,6768298931039134e5,<p id = 'stroop_stim' style = 'color: green; font-size: 60pt;'>green</p>,718269697832,html-keyboard-multiple-response,3,8822,0.0-2.0-0.1,"G,R,E,E,N,",green,green,g,congruent
+data_2019-11-12-13-30-28_6v7dpf9sr3,1439157816631773,<p id = 'stroop_stim' style = 'color: blue; font-size: 60pt;'>blue</p>,6676856932,html-keyboard-multiple-response,4,12609,0.0-2.0-0.2,"B,L,U,E,",blue,blue,b,congruent
+data_2019-11-12-13-30-28_6v7dpf9sr3,622715861,<p id = 'stroop_stim' style = 'color: red; font-size: 60pt;'>red</p>,82696832,html-keyboard-multiple-response,5,14640,0.0-2.0-0.3,"R,E,D,",red,red,r,congruent
+data_2019-11-12-13-30-28_6v7dpf9sr3,1177,<p> Thanks for participating </p>,32,html-keyboard-response,6,17445,0.0-3.0,NA,NA,NA,NA,NA
