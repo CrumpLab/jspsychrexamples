@@ -14,11 +14,11 @@ This is is the default template that is loaded by jspsychr. See the folder for t
 
 <https://crumplab.github.io/jspsychrexamples/Stroop/experiment/index.html>
 
-## Stroop multiple keypress
+## Stroop multiple response
 
 Uses a custom plugin to allow multiple key presses on each trial.
 
-<https://crumplab.github.io/jspsychrexamples/Stroop_multiple_keypress/experiment/index.html>
+<https://crumplab.github.io/jspsychrexamples/Stroop_multiple_response/experiment/index.html>
 
 ## FirebaseDemo
 
