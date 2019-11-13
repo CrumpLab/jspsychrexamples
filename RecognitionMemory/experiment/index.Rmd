@@ -1,0 +1,181 @@
+---
+title: "Experiment Name"
+author: "Your Name"
+output:
+  html_document:
+    mathjax: null
+    highlight: null
+    theme: null
+    css: jspsych-6-2/css/jspsych.css
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message=FALSE, warning=FALSE)
+# load the plugin scripts in plugins.html which is included in the header.
+```
+
+```{r}
+# load jspsych and plugin scripts
+# note: this is an r code chunk
+library(htmltools)
+tagList(
+tags$script(src='jspsych-6-2/jspsych.js'),
+tags$script(src='jspsych-6-2/plugins/jspsych-html-keyboard-response.js'),
+tags$script(src='jspsychr/jspsychr.js')
+)
+```
+
+```{r}
+# load libraries
+library(jspsychr)
+library(dplyr)
+
+# function to make nonwords
+generate_random_string <- function(n_letters = 5){
+  return(paste(sample(LETTERS,n_letters, replace=TRUE), collapse=""))
+}
+
+# make 100 nonwords
+non_words <- unique(sapply(rep(5,200), generate_random_string))
+non_words <- non_words[1:100]
+
+# make encoding dataframe
+encoding_df <- data.frame(stimulus = NA,
+                          string = non_words[1:50],
+                          phase = "Encoding",
+                          font_size = rep(c("15pt","30pt"), each = 25)
+                          )
+
+encoding_df$stimulus <- html_stimulus(df = encoding_df, 
+                                html_content = "string",
+                                html_element = "p",
+                                column_names = c("font_size"),
+                                css = c("font-size"),
+                                id = "id_encode")
+
+# make test dataframe
+test_df <- data.frame(stimulus = NA,
+                          string = non_words[1:50],
+                          phase = "test",
+                          type = "OLD",
+                          font_size = rep(c("15pt","30pt"), each = 25)
+                          ) %>%
+  rbind(
+    data.frame(stimulus = NA,
+                          string = non_words[51:100],
+                          phase = "test",
+                          type = "NEW",
+                          font_size = rep(c("15pt","30pt"), each = 25)
+                          )
+  )
+
+test_df$stimulus <- html_stimulus(df = test_df, 
+                                html_content = "string",
+                                html_element = "p",
+                                column_names = c("font_size"),
+                                css = c("font-size"),
+                                id = "id_encode")
+
+# write json objects
+encoding_json <- stimulus_df_to_json(df = encoding_df,
+                                     stimulus = "stimulus",
+                                     data = c("string","phase","font_size"))
+
+test_json <- stimulus_df_to_json(df = test_df,
+                                     stimulus = "stimulus",
+                                     data = c("string","phase","type","font_size"))
+```
+
+```{r, results="asis"}
+write_to_script(encoding_json,"encoding_stimuli")
+```
+
+```{r, results="asis"}
+write_to_script(test_json,"test_stimuli")
+```
+
+
+
+```{js}
+/* Note this is a js (javascript) code chunk
+
+/* experiment parameters */
+var reps_per_trial_type = 1;
+
+/*set up welcome block*/
+var welcome = {
+  type: "html-keyboard-response",
+  stimulus: "Welcome to the experiment. Press any key to begin."
+};
+
+/*set up instructions block*/
+var encoding_instructions = {
+  type: "html-keyboard-response",
+  stimulus: "<p>You will see some nonwords</p>"+
+    "<p>Remember them for a later memory test</p>"+
+    "<p>Press any key to begin.</p>",
+  post_trial_gap: 1000
+};
+
+
+/* defining encoding timeline */
+var encoding = {
+  timeline: [{
+    type: 'html-keyboard-response',
+    trial_duration: 500,
+    stimulus: jsPsych.timelineVariable('stimulus'),
+    data: jsPsych.timelineVariable('data')
+  }],
+  timeline_variables: encoding_stimuli,
+  randomize_order: true
+};
+
+/*set up instructions block*/
+var test_instructions = {
+  type: "html-keyboard-response",
+  stimulus: "<p>You will see some OLD nonwords</p>"+
+    "<p>And some NEW nonwords</p>"+
+    "<p>Press O for OLD, and N for NEW</p>"+
+    "<p>Press any key to begin.</p>",
+  post_trial_gap: 1000
+};
+
+/* defining test timeline */
+var testing = {
+  timeline: [{
+    type: 'html-keyboard-response',
+    choices: ["o","n"],
+    response_ends_trial: true,
+    stimulus: jsPsych.timelineVariable('stimulus'),
+    data: jsPsych.timelineVariable('data')
+  }],
+  timeline_variables: test_stimuli,
+  randomize_order: true
+};
+
+/*set up debrief block*/
+var debrief = {
+  type: "html-keyboard-response",
+  stimulus: "<p>Thanks for participating!</p>",
+  post_trial_gap: 1000
+};
+
+/*set up experiment structure*/
+var timeline = [];
+timeline.push(welcome);
+timeline.push(encoding_instructions);
+timeline.push(encoding);
+timeline.push(test_instructions);
+timeline.push(testing);
+timeline.push(debrief);
+
+/*start experiment*/
+jsPsych.init({
+    timeline: timeline,
+    on_finish: function() {
+        jsPsych.data.displayData();
+    }
+});
+```
+

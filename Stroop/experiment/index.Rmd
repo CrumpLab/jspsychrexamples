@@ -1,6 +1,6 @@
 ---
-title: "Experiment Name"
-author: "Your Name"
+title: "RM"
+author: "Matt Crump"
 output:
   html_document:
     mathjax: null
