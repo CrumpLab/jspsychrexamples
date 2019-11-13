@@ -24,3 +24,9 @@ Uses a custom plugin to allow multiple key presses on each trial.
 
 Demo for using google's firebase as an external database to save the data from an online experiment. Some instructions for this demo are here: <https://crumplab.github.io/jspsychrexamples/FirebaseDemo/Instructions_FirebaseDemo.html>
 
+## Recognition Memory
+
+Demo and tutorial walkthrough for building a recognition memory experiment. See the walkthrough here: <https://crumplab.github.io/jspsychrexamples/RecognitionMemory/RecognitionMemory.html>
+
+View the demo experiment here: <https://crumplab.github.io/jspsychrexamples/RecognitionMemory/experiment/index.html>
+
